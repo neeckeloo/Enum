@@ -83,4 +83,52 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
 
         $this->manager->getList(1);
     }
+
+    public function testGetter()
+    {
+        $adapter = $this->getMock('Enum\Adapter\AdapterInterface');
+        $adapter
+            ->expects($this->any())
+            ->method('get')
+            ->will($this->returnValue($this->getDataset()));
+
+        $this->manager->setAdapter($adapter);
+
+        for ($i = 1; $i <= 3; $i++) {
+            $item = $this->manager->get(1, $i);
+            $this->assertEquals($i, $item['id']);
+        }
+    }
+
+    public function testGetShortName()
+    {
+        $adapter = $this->getMock('Enum\Adapter\AdapterInterface');
+        $adapter
+            ->expects($this->any())
+            ->method('get')
+            ->will($this->returnValue($this->getDataset()));
+
+        $this->manager->setAdapter($adapter);
+
+        for ($i = 1; $i <= 3; $i++) {
+            $shortName = $this->manager->getShortName(1, $i);
+            $this->assertEquals('short_' . $i, $shortName);
+        }
+    }
+
+    public function testGetLongName()
+    {
+        $adapter = $this->getMock('Enum\Adapter\AdapterInterface');
+        $adapter
+            ->expects($this->any())
+            ->method('get')
+            ->will($this->returnValue($this->getDataset()));
+
+        $this->manager->setAdapter($adapter);
+
+        for ($i = 1; $i <= 3; $i++) {
+            $shortName = $this->manager->getLongName(1, $i);
+            $this->assertEquals('long_' . $i, $shortName);
+        }
+    }
 }

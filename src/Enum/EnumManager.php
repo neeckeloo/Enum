@@ -5,8 +5,8 @@ use Enum\Adapter\AdapterInterface;
 
 class EnumManager
 {
-    const LONG = 'longName';
-    const SHORT = 'shortName';
+    const LONG = 'long_name';
+    const SHORT = 'short_name';
 
     /**
      * @var AdapterInterface
@@ -51,7 +51,7 @@ class EnumManager
     /**
      * @param  int $enumId
      * @param  int $value
-     * @return type
+     * @return string|int
      */
     public function get($enumId, $value)
     {
@@ -106,8 +106,6 @@ class EnumManager
             return $value;
         }
 
-        $fields = $enum->toArray();
-
-        return $fields[$type];
+        return $enum[$type];
     }
 }
