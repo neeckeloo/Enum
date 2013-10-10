@@ -16,7 +16,7 @@ class EnumManager
     /**
      * @param AdapterInterface $adapter
      */
-    protected function setAdapter(AdapterInterface $adapter)
+    public function setAdapter(AdapterInterface $adapter)
     {
         $this->adapter = $adapter;
     }
@@ -42,8 +42,7 @@ class EnumManager
 
         $items = array();
         foreach ($enumeration as $key => $item) {
-            $fields = $item->toArray();
-            $items[$key] = $fields[$field];
+            $items[$key] = $item[$field];
         }
 
         return $items;
