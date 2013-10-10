@@ -2,6 +2,7 @@
 namespace Enum\Adapter;
 
 use Doctrine\DBAL\Connection;
+use Enum\Options\DoctrineOptions;
 
 class DoctrineAdapter implements AdapterInterface
 {
@@ -11,25 +12,18 @@ class DoctrineAdapter implements AdapterInterface
     protected $connection;
 
     /**
-     * @var string
+     * @var DoctrineOptions
      */
-    protected $enumTableName;
-
-    /**
-     * @var string
-     */
-    protected $enumItemTableName;
+    protected $options;
 
     /**
      * @param Connection $connection
-     * @param string $enumTableName
-     * @param string $enumItemTableName
+     * @param DoctrineOptions $options
      */
-    public function __construct(Connection $connection, $enumTableName, $enumItemTableName)
+    public function __construct(Connection $connection, DoctrineOptions $options)
     {
-        $this->connection         = $connection;
-        $this->enumTableName      = (string) $enumTableName;
-        $this->enumItemTableName  = (string) $enumItemTableName;
+        $this->connection = $connection;
+        $this->options    = $options;
     }
 
     /**
@@ -38,8 +32,8 @@ class DoctrineAdapter implements AdapterInterface
      */
     public function get($enumId)
     {
-        $sql = 'SELECT ei.* FROM ' . $this->enumItemTableName . ' ei
-        INNER JOIN ' . $this->enumTableName . ' e ON ei.enum_id = e.id WHERE e.id = ?';
+        $sql = 'SELECT ei.* FROM ' . $this->options->getEnumItemTableName() . ' ei
+        INNER JOIN ' . $this->options->getEnumTableName() . ' e ON ei.enum_id = e.id WHERE e.id = ?';
         
         $statement = $this->connection->executeQuery($sql, array($enumId));
         $result = $statement->fetchAll();

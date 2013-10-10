@@ -14,10 +14,7 @@ class DoctrineAdapterFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $options = $serviceLocator->get('Enum\Options\DoctrineOptions');
-
         $connection = $serviceLocator->get($options->getConnection());
-        $tableName  = $options->getTableName();
-
-        return new DoctrineAdapter($connection, $tableName);
+        return new DoctrineAdapter($connection, $options);
     }
 }
