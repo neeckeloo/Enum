@@ -23,34 +23,12 @@ class EnumManager
 
     /**
      * @param  int $enumId
-     * @return array
-     */
-    protected function getEnumeration($enumId)
-    {
-        $query = $this->em->createQuery(
-            'SELECT ei FROM Common\Entity\EnumerationItem ei'
-            . ' JOIN ei.enumeration e '
-            . ' WHERE e.id = :enumId'
-        );
-        $query->setParameter('enumId', $enumId);
-        $result = $query->getResult();
-
-        $items = array();
-        foreach ($result as $row) {
-            $items[$row->getValue()] = $row;
-        }
-
-        return $items;
-    }
-
-    /**
-     * @param  int $enumId
      * @param  null|string $field
      * @return array
      */
     public function getList($enumId, $field = null)
     {
-        $enumeration = $this->getEnumeration($enumId);
+        $enumeration = $this->adapter->get($enumId);
         if (count($enumeration) == 0) {
             throw new \RuntimeException(sprintf(
                 'Enumeration "%d" does not exists.',

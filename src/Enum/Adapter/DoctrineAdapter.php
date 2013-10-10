@@ -40,7 +40,7 @@ class DoctrineAdapter implements AdapterInterface
 
         $items = array();
         foreach ($result as $row) {
-            $items[$row['id']] = $row['name'];
+            $items[$row['id']] = $row;
         }
 
         return $items;
