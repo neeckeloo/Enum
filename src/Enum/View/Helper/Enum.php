@@ -7,13 +7,10 @@ use Zend\View\Helper\AbstractHelper;
 
 class Enum extends AbstractHelper implements EnumManagerAwareInterface
 {
-    const LONG = 'longName';
-    const SHORT = 'shortName';
-
     /**
      * @var array
      */
-    protected static $validMode = array(self::LONG, self::SHORT);
+    protected $validMode = array(EnumManager::LONG, EnumManager::SHORT);
 
     /**
      * @var EnumManager
@@ -38,8 +35,8 @@ class Enum extends AbstractHelper implements EnumManagerAwareInterface
     {
         $enumCode = (int) $enumCode;
 
-        $object = $this->enumManager->get($enumCode, $value);
-        if (null === $object) {
+        $row = $this->enumManager->get($enumCode, $value);
+        if (null === $row) {
             if (isset($options['default'])) {
                 return $options['default'];
             }
@@ -47,13 +44,11 @@ class Enum extends AbstractHelper implements EnumManagerAwareInterface
             return null;
         }
 
-        $mode = self::LONG;
-        if (isset($options['mode']) && in_array($options['mode'], self::$validMode)) {
+        $mode = EnumManager::LONG;
+        if (isset($options['mode']) && in_array($options['mode'], $this->validMode)) {
             $mode = (string) $options['mode'];
         }
 
-        $method = 'get' . ucfirst($mode);
-
-        return call_user_func(array($object, $method));
+        return $row[$mode];
     }
 }
