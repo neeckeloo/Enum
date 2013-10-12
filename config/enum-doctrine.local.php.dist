@@ -4,30 +4,26 @@ return array(
         /**
          * Name of the adapter service
          */
-        // 'adapter' => 'Enum\Adapter\DoctrineAdapter',
+        'adapter' => 'Enum\Adapter\DoctrineAdapter',
 
         /**
          * Adapter options
          */
         'options' => array(
             /**
-             * Doctrine options
-             */
-
-            /**
              * Name of the doctrine connection service
              */
-            // 'connection' => 'doctrine.connection.orm_default',
+            'connection' => 'doctrine.connection.orm_default',
 
             /**
              * Table name which should be used to store enumerations
              */
-            // 'enum_table_name' => 'enumeration',
+            'enum_table_name' => 'enumeration',
 
             /**
              * Table name which should be used to store enumeration items
              */
-            // 'enum_item_table_name' => 'enumeration_item',
+            'enum_item_table_name' => 'enumeration_item',
         ),
     ),
 );
