@@ -55,8 +55,7 @@ class EnumTest extends \PHPUnit_Framework_TestCase
         
         $manager
             ->expects($this->any())
-            ->method('get')
-            ->will($this->returnValue(null));
+            ->method('get');
 
         $this->helper->setEnumManager($manager);
 

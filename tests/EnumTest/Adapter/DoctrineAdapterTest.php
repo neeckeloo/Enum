@@ -39,12 +39,10 @@ class DoctrineAdapterTest extends \PHPUnit_Framework_TestCase
         $options = $this->getMock('Enum\Options\DoctrineOptions');
         $options
             ->expects($this->once())
-            ->method('getEnumItemTableName')
-            ->will($this->returnValue(''));
+            ->method('getEnumItemTableName');
         $options
             ->expects($this->once())
-            ->method('getEnumTableName')
-            ->will($this->returnValue(''));
+            ->method('getEnumTableName');
         
         $adapter = new DoctrineAdapter($connection, $options);
         $rowset = $adapter->get(1);
