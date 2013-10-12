@@ -6,16 +6,6 @@ use Enum\EnumManager;
 class EnumManagerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var EnumManager
-     */
-    protected $manager;
-
-    public function setUp()
-    {
-        $this->manager = new EnumManager();
-    }
-
-    /**
      * @return array
      */
     protected function getDataset()
@@ -38,10 +28,9 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
             ->expects($this->once())
             ->method('get')
             ->will($this->returnValue($this->getDataset()));
+        $manager = new EnumManager($adapter);
 
-        $this->manager->setAdapter($adapter);
-
-        $list = $this->manager->getList(1);
+        $list = $manager->getList(1);
 
         $this->assertCount(3, $list);
         for ($i = 1; $i <= 3; $i++) {
@@ -57,10 +46,9 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
             ->expects($this->once())
             ->method('get')
             ->will($this->returnValue($this->getDataset()));
+        $manager = new EnumManager($adapter);
 
-        $this->manager->setAdapter($adapter);
-
-        $list = $this->manager->getList(1, 'long_name');
+        $list = $manager->getList(1, 'long_name');
 
         $this->assertCount(3, $list);
         for ($i = 1; $i <= 3; $i++) {
@@ -78,10 +66,9 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
             ->expects($this->once())
             ->method('get')
             ->will($this->returnValue(array()));
+        $manager = new EnumManager($adapter);
 
-        $this->manager->setAdapter($adapter);
-
-        $this->manager->getList(1);
+        $manager->getList(1);
     }
 
     public function testGetter()
@@ -91,11 +78,10 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('get')
             ->will($this->returnValue($this->getDataset()));
-
-        $this->manager->setAdapter($adapter);
+        $manager = new EnumManager($adapter);
 
         for ($i = 1; $i <= 3; $i++) {
-            $item = $this->manager->get(1, $i);
+            $item = $manager->get(1, $i);
             $this->assertEquals($i, $item['id']);
         }
     }
@@ -107,11 +93,10 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('get')
             ->will($this->returnValue($this->getDataset()));
-
-        $this->manager->setAdapter($adapter);
+        $manager = new EnumManager($adapter);
 
         for ($i = 1; $i <= 3; $i++) {
-            $shortName = $this->manager->getShortName(1, $i);
+            $shortName = $manager->getShortName(1, $i);
             $this->assertEquals('short_' . $i, $shortName);
         }
     }
@@ -123,11 +108,10 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('get')
             ->will($this->returnValue($this->getDataset()));
-
-        $this->manager->setAdapter($adapter);
+        $manager = new EnumManager($adapter);
 
         for ($i = 1; $i <= 3; $i++) {
-            $shortName = $this->manager->getLongName(1, $i);
+            $shortName = $manager->getLongName(1, $i);
             $this->assertEquals('long_' . $i, $shortName);
         }
     }

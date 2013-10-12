@@ -16,7 +16,7 @@ class EnumManager
     /**
      * @param AdapterInterface $adapter
      */
-    public function setAdapter(AdapterInterface $adapter)
+    public function __construct(AdapterInterface $adapter)
     {
         $this->adapter = $adapter;
     }

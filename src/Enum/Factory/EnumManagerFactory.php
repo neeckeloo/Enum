@@ -13,11 +13,7 @@ class EnumManagerFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $manager = new EnumManager();
-
-        $entityManager = $serviceLocator->get('Doctrine\ORM\EntityManager');
-        $manager->setEntityManager($entityManager);
-
-        return $manager;
+        $adapter = $serviceLocator->get('Enum\Adapter\Adapter');
+        return new EnumManager($adapter);
     }
 }
