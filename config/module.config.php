@@ -2,7 +2,10 @@
 return array(
     'service_manager' => array(
         'factories' => array(
-            'Enum\EnumManager' => 'Enum\Service\EnumManagerFactory',
+            'Enum\EnumManager'             => 'Enum\Factory\EnumManagerFactory',
+            'Enum\Adapter\Adapter'         => 'Enum\Factory\AdapterFactory',
+            'Enum\Adapter\DoctrineAdapter' => 'Enum\Factory\DoctrineAdapterFactory',
+            'Enum\Options\DoctrineOptions' => 'Enum\Factory\DoctrineOptionsFactory',
         ),
     ),
 
