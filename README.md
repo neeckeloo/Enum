@@ -11,14 +11,14 @@ Usage
 
 1. Enumeration data
 
-### Enumerations
+##### Enumerations
 
 | id   | name       |
 |------|------------|
 | 1    | Civility   |
 | 2    | Status     |
 
-### Enumeration items
+##### Enumeration items
 
 | id | enum_id | value | short_name | long_name |
 |----|---------|-------|------------|-----------|
