@@ -115,4 +115,16 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals('long_' . $i, $shortName);
         }
     }
+
+    public function testGetLongNameFromEnumDoesNotExists()
+    {
+        $adapter = $this->getMock('Enum\Adapter\AdapterInterface');
+        $adapter
+            ->expects($this->any())
+            ->method('get')
+            ->will($this->returnValue($this->getDataset()));
+        $manager = new EnumManager($adapter);
+
+        $this->assertEquals(4, $manager->getLongName(1, 4));
+    }
 }

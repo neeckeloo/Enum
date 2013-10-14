@@ -94,12 +94,6 @@ class EnumManager
     protected function getName($type, $enumId, $value)
     {
         $type = (string) $type;
-        if ($type !== self::SHORT && $type !== self::LONG) {
-            throw new \InvalidArgumentException(sprintf(
-                'The type "%s" is invalid; "short_name" or "long_name" expected.',
-                $type
-            ));
-        }
 
         $enum = $this->get($enumId, $value);
         if (null === $enum) {
