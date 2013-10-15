@@ -29,29 +29,29 @@ Enumeration items
 
 ### Use view helper to show enumeration value
 
-    ```php
-    <?php
-    // Mister
-    echo $this->enum(1, 1);
+```php
+<?php
+// Mister
+echo $this->enum(1, 1);
 
-    // Mr
-    echo $this->enum(1, 1, array('mode' => \Enum\EnumManager::SHORT));
+// Mr
+echo $this->enum(1, 1, array('mode' => \Enum\EnumManager::SHORT));
 
-    // Mistress
-    echo $this->enum(2, 1);
+// Mistress
+echo $this->enum(2, 1);
 
-    // Mrs
-    echo $this->enum(2, 1, array('mode' => \Enum\EnumManager::SHORT));
+// Mrs
+echo $this->enum(2, 1, array('mode' => \Enum\EnumManager::SHORT));
 
-    // Valid
-    echo $this->enum(1, 2);
+// Valid
+echo $this->enum(1, 2);
 
-    // Valid
-    echo $this->enum(1, 2, array('mode' => \Enum\EnumManager::SHORT));
+// Valid
+echo $this->enum(1, 2, array('mode' => \Enum\EnumManager::SHORT));
 
-    // Invalid
-    echo $this->enum(2, 2);
+// Invalid
+echo $this->enum(2, 2);
 
-    // Invalid
-    echo $this->enum(2, 2, array('mode' => \Enum\EnumManager::SHORT));
-    ```
+// Invalid
+echo $this->enum(2, 2, array('mode' => \Enum\EnumManager::SHORT));
+```
