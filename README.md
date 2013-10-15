@@ -6,19 +6,27 @@ Enum module for Zend Framework 2
 [![Build Status](https://secure.travis-ci.org/neeckeloo/Enum.png?branch=master)](http://travis-ci.org/neeckeloo/Enum)
 [![Coverage Status](https://coveralls.io/repos/neeckeloo/Enum/badge.png)](https://coveralls.io/r/neeckeloo/Enum)
 
+Configuration
+-------------
+
+#### Adapters
+
+- Enum\Adapter\DoctrineAdapter (config/enum-doctrine.local.php.dist)
+- Enum\Adapter\ZendDbdapter (config/enum-zenddb.local.php.dist) à venir
+
 Usage
 -----
 
-### Enumeration data
+#### Enumeration data
 
-Enumerations
+Enumerations:
 
 | id   | name       |
 |------|------------|
 | 1    | Civility   |
 | 2    | Status     |
 
-Enumeration items
+Enumeration items:
 
 | id | enum_id | value | short_name | long_name |
 |----|---------|-------|------------|-----------|
@@ -27,7 +35,7 @@ Enumeration items
 | 3  | 2       | 1     | Valid      | Valid     |
 | 4  | 2       | 2     | Invalid    | Invalid   |
 
-### Use view helper to show enumeration value
+#### Use view helper to show enumeration value
 
 ```php
 <?php
