@@ -7,9 +7,9 @@ Enum module for Zend Framework 2
 [![Coverage Status](https://coveralls.io/repos/neeckeloo/Enum/badge.png)](https://coveralls.io/r/neeckeloo/Enum)
 
 Usage
-------------
+-----
 
-1. Enumeration data
+### Enumeration data
 
 Enumerations
 
@@ -27,7 +27,7 @@ Enumeration items
 | 3  | 2       | 1     | Valid      | Valid     |
 | 4  | 2       | 2     | Invalid    | Invalid   |
 
-2. Use view helper to show enumeration value
+### Use view helper to show enumeration value
 
     ```php
     <?php
