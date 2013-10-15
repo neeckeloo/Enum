@@ -5,6 +5,7 @@ Enum module for Zend Framework 2
 
 [![Build Status](https://secure.travis-ci.org/neeckeloo/Enum.png?branch=master)](http://travis-ci.org/neeckeloo/Enum)
 [![Coverage Status](https://coveralls.io/repos/neeckeloo/Enum/badge.png)](https://coveralls.io/r/neeckeloo/Enum)
+[![Dependencies Status](https://d2xishtp1ojlk0.cloudfront.net/d/13378582)](http://depending.in/neeckeloo/Enum)
 
 Configuration
 -------------
