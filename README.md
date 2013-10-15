@@ -12,7 +12,7 @@ Configuration
 #### Adapters
 
 - Enum\Adapter\DoctrineAdapter (config/enum-doctrine.local.php.dist)
-- Enum\Adapter\ZendDbdapter (config/enum-zenddb.local.php.dist) à venir
+- Enum\Adapter\ZendDbdapter (config/enum-zenddb.local.php.dist) in progress
 
 Usage
 -----
