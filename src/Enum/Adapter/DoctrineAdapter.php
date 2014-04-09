@@ -33,14 +33,14 @@ class DoctrineAdapter implements AdapterInterface
     public function get($enumId)
     {
         $sql = 'SELECT ei.* FROM ' . $this->options->getEnumItemTableName() . ' ei
-        INNER JOIN ' . $this->options->getEnumTableName() . ' e ON ei.enum_id = e.id WHERE e.id = ?';
+        INNER JOIN ' . $this->options->getEnumTableName() . ' e ON ei.enumeration_id = e.enumeration_id WHERE e.enumeration_id = ?';
         
         $statement = $this->connection->executeQuery($sql, array($enumId));
         $result = $statement->fetchAll();
 
         $items = array();
         foreach ($result as $row) {
-            $items[$row['id']] = $row;
+            $items[$row['value']] = $row;
         }
 
         return $items;

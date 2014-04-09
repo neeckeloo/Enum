@@ -56,7 +56,6 @@ class EnumManager
     public function get($enumId, $value)
     {
         $items = $this->getList($enumId);
-        $value = (int) $value;
 
         if (!array_key_exists($value, $items) || empty($items[$value])) {
             return null;
