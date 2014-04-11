@@ -13,7 +13,7 @@ class DoctrineAdapterTest extends \PHPUnit_Framework_TestCase
         $data = array();
         for ($i = 1; $i <= 3; $i++) {
             $data[] = array(
-                'id'         => $i,
+                'value'      => $i,
                 'short_name' => 'short_' . $i,
                 'long_name'  => 'long_' . $i,
             );
