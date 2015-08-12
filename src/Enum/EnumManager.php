@@ -14,6 +14,11 @@ class EnumManager
     protected $adapter;
 
     /**
+     * @var array
+     */
+    protected $persistence = [];
+
+    /**
      * @param AdapterInterface $adapter
      */
     public function __construct(AdapterInterface $adapter)
@@ -28,13 +33,22 @@ class EnumManager
      */
     public function getList($enumId, $field = null)
     {
+        if (
+            array_key_exists($enumId, $this->persistence)
+            && !empty($this->persistence[$enumId])
+        ) {
+            return $this->persistence[$enumId];
+        }
+
         $enumeration = $this->adapter->get($enumId);
-        if (count($enumeration) == 0) {
+        if (empty($enumeration)) {
             throw new \RuntimeException(sprintf(
                 'Enumeration "%d" does not exists.',
                 $enumId
             ));
         }
+
+        $this->persistence[$enumId] = $enumeration;
 
         if (null === $field) {
             return $enumeration;
