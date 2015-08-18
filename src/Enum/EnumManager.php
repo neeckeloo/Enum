@@ -26,12 +26,7 @@ class EnumManager
         $this->adapter = $adapter;
     }
 
-    /**
-     * @param  int $enumId
-     * @param  null|string $field
-     * @return array
-     */
-    public function getList($enumId, $field = null)
+    private function getEnumeration($enumId)
     {
         if (
             array_key_exists($enumId, $this->persistence)
@@ -49,6 +44,18 @@ class EnumManager
         }
 
         $this->persistence[$enumId] = $enumeration;
+
+        return $enumeration;
+    }
+
+    /**
+     * @param  int $enumId
+     * @param  null|string $field
+     * @return array
+     */
+    public function getList($enumId, $field = null)
+    {
+        $enumeration = $this->getEnumeration($enumId);
 
         if (null === $field) {
             return $enumeration;
