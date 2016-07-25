@@ -28,7 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Enum\\": "src/Enum"
+            "Enum\\": "src"
         },
         "classmap": [
             "./"
@@ -36,7 +36,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "EnumTest\\": "tests/EnumTest"
+            "EnumTest\\": "tests"
         }
     }
 }

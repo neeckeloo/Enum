@@ -1,11 +1,10 @@
 <?php
 namespace Enum;
 
-use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
-use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\Feature\ServiceProviderInterface;
+use Enum\EnumManager;
+use Zend\Loader\StandardAutoloader;
 
-class Module implements AutoloaderProviderInterface, ConfigProviderInterface, ServiceProviderInterface
+class Module
 {
     public function getConfig()
     {
@@ -15,7 +14,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Se
     public function getAutoloaderConfig()
     {
         return array(
-            'Zend\Loader\StandardAutoloader' => array(
+            StandardAutoloader::class => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
@@ -29,7 +28,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Se
             'initializers' => array(
                 function($instance, $sm) {
                     if ($instance instanceof EnumManagerAwareInterface) {
-                        $instance->setEnumManager($sm->get('Enum\EnumManager'));
+                        $instance->setEnumManager($sm->get(EnumManager::class));
                     }
                 },
             ),
