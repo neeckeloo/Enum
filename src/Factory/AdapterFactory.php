@@ -1,19 +1,14 @@
 <?php
 namespace Enum\Factory;
 
-use Enum\Adapter\AdapterInterface;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
 
-class AdapterFactory implements FactoryInterface
+class AdapterFactory
 {
-    /**
-     * @param  ServiceLocatorInterface $serviceLocator
-     * @return AdapterInterface
-     */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container)
     {
-        $config = $serviceLocator->get('Config');
-        return $serviceLocator->get($config['enum']['adapter']);
+        $config = $container->get('Config');
+
+        return $container->get($config['enum']['adapter']);
     }
 }

@@ -2,19 +2,16 @@
 namespace Enum\Factory;
 
 use Enum\Adapter\DoctrineAdapter;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Enum\Options\DoctrineOptions;
+use Interop\Container\ContainerInterface;
 
-class DoctrineAdapterFactory implements FactoryInterface
+class DoctrineAdapterFactory
 {
-    /**
-     * @param  ServiceLocatorInterface $serviceLocator
-     * @return DoctrineAdapter
-     */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container)
     {
-        $options = $serviceLocator->get('Enum\Options\DoctrineOptions');
-        $connection = $serviceLocator->get($options->getConnection());
+        $options    = $container->get(DoctrineOptions::class);
+        $connection = $container->get($options->getConnection());
+
         return new DoctrineAdapter($connection, $options);
     }
 }

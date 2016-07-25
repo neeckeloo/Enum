@@ -4,7 +4,7 @@ namespace EnumTest\Factory;
 use Enum\Adapter\AdapterInterface;
 use Enum\EnumManager;
 use Enum\Factory\EnumManagerFactory;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
 
 class EnumManagerFactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -12,13 +12,13 @@ class EnumManagerFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $adapter = $this->createMock(AdapterInterface::class);
 
-        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
-        $serviceLocator
+        $container = $this->createMock(ContainerInterface::class);
+        $container
             ->method('get')
             ->will($this->returnValue($adapter));
 
         $factory = new EnumManagerFactory;
-        $manager = $factory->createService($serviceLocator);
+        $manager = $factory($container);
 
         $this->assertInstanceOf(EnumManager::class, $manager);
     }

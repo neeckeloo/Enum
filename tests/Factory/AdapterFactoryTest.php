@@ -3,15 +3,15 @@ namespace EnumTest\Factory;
 
 use Enum\Adapter\AdapterInterface;
 use Enum\Factory\AdapterFactory;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
 
 class AdapterFactoryTest extends \PHPUnit_Framework_TestCase
 {
     public function testCreateService()
     {
-        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
+        $container = $this->createMock(ContainerInterface::class);
         
-        $serviceLocator
+        $container
             ->expects($this->at(0))
             ->method('get')
             ->with('Config')
@@ -21,7 +21,7 @@ class AdapterFactoryTest extends \PHPUnit_Framework_TestCase
                 ),
             )));
 
-        $serviceLocator
+        $container
             ->expects($this->at(1))
             ->method('get')
             ->with('Enum\Adapter\Adapter')
@@ -30,7 +30,7 @@ class AdapterFactoryTest extends \PHPUnit_Framework_TestCase
             ));
 
         $factory = new AdapterFactory;
-        $adapter = $factory->createService($serviceLocator);
+        $adapter = $factory($container);
 
         $this->assertInstanceOf(AdapterInterface::class, $adapter);
     }
