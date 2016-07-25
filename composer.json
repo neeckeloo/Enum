@@ -29,10 +29,7 @@
     "autoload": {
         "psr-4": {
             "Enum\\": "src"
-        },
-        "classmap": [
-            "./"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
