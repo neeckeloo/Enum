@@ -25,11 +25,16 @@
         "zendframework/zend-view": "~2.5"
     },
     "autoload": {
-        "psr-0": {
-            "Enum": "src/"
+        "psr-4": {
+            "Enum\\": "src/Enum"
         },
         "classmap": [
             "./"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EnumTest\\": "tests/EnumTest"
+        }
     }
 }
