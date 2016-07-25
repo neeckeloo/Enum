@@ -2,15 +2,16 @@
 namespace EnumTest\Factory;
 
 use Enum\Factory\DoctrineOptionsFactory;
+use Enum\Options\DoctrineOptions;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 class DoctrineOptionsFactoryTest extends \PHPUnit_Framework_TestCase
 {
     public function testCreateService()
     {
-        $serviceLocator = $this->getMock('Zend\ServiceManager\ServiceLocatorInterface');
+        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
 
         $serviceLocator
-            ->expects($this->once())
             ->method('get')
             ->with('Config')
             ->will($this->returnValue(array(
@@ -22,6 +23,6 @@ class DoctrineOptionsFactoryTest extends \PHPUnit_Framework_TestCase
         $factory = new DoctrineOptionsFactory;
         $adapter = $factory->createService($serviceLocator);
 
-        $this->assertInstanceOf('Enum\Options\DoctrineOptions', $adapter);
+        $this->assertInstanceOf(DoctrineOptions::class, $adapter);
     }
 }

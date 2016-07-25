@@ -23,7 +23,7 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetListWithoutField()
     {
-        $adapter = $this->getMock('Enum\Adapter\AdapterInterface');
+        $adapter = $this->createMock('Enum\Adapter\AdapterInterface');
         $adapter
             ->expects($this->once())
             ->method('get')
@@ -41,7 +41,7 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetListWithField()
     {
-        $adapter = $this->getMock('Enum\Adapter\AdapterInterface');
+        $adapter = $this->createMock('Enum\Adapter\AdapterInterface');
         $adapter
             ->expects($this->once())
             ->method('get')
@@ -61,7 +61,7 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetEmptyList()
     {
-        $adapter = $this->getMock('Enum\Adapter\AdapterInterface');
+        $adapter = $this->createMock('Enum\Adapter\AdapterInterface');
         $adapter
             ->expects($this->once())
             ->method('get')
@@ -73,7 +73,7 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetter()
     {
-        $adapter = $this->getMock('Enum\Adapter\AdapterInterface');
+        $adapter = $this->createMock('Enum\Adapter\AdapterInterface');
         $adapter
             ->expects($this->any())
             ->method('get')
@@ -88,7 +88,7 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetShortName()
     {
-        $adapter = $this->getMock('Enum\Adapter\AdapterInterface');
+        $adapter = $this->createMock('Enum\Adapter\AdapterInterface');
         $adapter
             ->expects($this->any())
             ->method('get')
@@ -103,7 +103,7 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetLongName()
     {
-        $adapter = $this->getMock('Enum\Adapter\AdapterInterface');
+        $adapter = $this->createMock('Enum\Adapter\AdapterInterface');
         $adapter
             ->expects($this->any())
             ->method('get')
@@ -118,7 +118,7 @@ class EnumManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetLongNameFromEnumDoesNotExists()
     {
-        $adapter = $this->getMock('Enum\Adapter\AdapterInterface');
+        $adapter = $this->createMock('Enum\Adapter\AdapterInterface');
         $adapter
             ->expects($this->any())
             ->method('get')

@@ -30,9 +30,9 @@ class EnumTest extends \PHPUnit_Framework_TestCase
 
     public function testGetterWithData()
     {
-        $manager = $this->getMockBuilder('Enum\EnumManager')
-                        ->disableOriginalConstructor()
-                        ->getMock();
+        $manager = $this->getMockBuilder(EnumManager::class)
+            ->disableOriginalConstructor()
+            ->getMock();
 
         $manager
             ->expects($this->any())
@@ -49,9 +49,9 @@ class EnumTest extends \PHPUnit_Framework_TestCase
 
     public function testGetterWithoutData()
     {
-        $manager = $this->getMockBuilder('Enum\EnumManager')
-                        ->disableOriginalConstructor()
-                        ->getMock();
+        $manager = $this->getMockBuilder(EnumManager::class)
+            ->disableOriginalConstructor()
+            ->getMock();
         
         $manager
             ->expects($this->any())

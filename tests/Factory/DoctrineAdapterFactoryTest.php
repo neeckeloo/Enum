@@ -1,27 +1,30 @@
 <?php
 namespace EnumTest\Factory;
 
+use Doctrine\DBAL\Connection;
+use Enum\Adapter\DoctrineAdapter;
 use Enum\Factory\DoctrineAdapterFactory;
+use Enum\Options\DoctrineOptions;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 class DoctrineAdapterFactoryTest extends \PHPUnit_Framework_TestCase
 {
     public function testCreateService()
     {
-        $serviceLocator = $this->getMock('Zend\ServiceManager\ServiceLocatorInterface');
+        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
 
-        $options = $this->getMock('Enum\Options\DoctrineOptions');
+        $options = $this->createMock(DoctrineOptions::class);
         $options
-            ->expects($this->once())
             ->method('getConnection')
             ->will($this->returnValue('connection'));
 
         $serviceLocator
             ->expects($this->at(0))
             ->method('get')
-            ->with('Enum\Options\DoctrineOptions')
+            ->with(DoctrineOptions::class)
             ->will($this->returnValue($options));
 
-        $connection = $this->getMockBuilder('Doctrine\DBAL\Connection')
+        $connection = $this->getMockBuilder(Connection::class)
                         ->disableOriginalConstructor()
                         ->getMock();
 
@@ -34,6 +37,6 @@ class DoctrineAdapterFactoryTest extends \PHPUnit_Framework_TestCase
         $factory = new DoctrineAdapterFactory;
         $adapter = $factory->createService($serviceLocator);
 
-        $this->assertInstanceOf('Enum\Adapter\DoctrineAdapter', $adapter);
+        $this->assertInstanceOf(DoctrineAdapter::class, $adapter);
     }
 }

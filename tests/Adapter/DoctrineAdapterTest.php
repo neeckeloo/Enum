@@ -2,6 +2,9 @@
 namespace EnumTest\Adapter;
 
 use Enum\Adapter\DoctrineAdapter;
+use Enum\Options\DoctrineOptions;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Statement;
 
 class DoctrineAdapterTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,19 +27,19 @@ class DoctrineAdapterTest extends \PHPUnit_Framework_TestCase
     public function testGetter()
     {
         $dataset = $this->getDataset();
-        $statement = $this->getMock('Doctrine\DBAL\Statement', array(), array(), '', false);
+        $statement = $this->createMock(Statement::class, array(), array(), '', false);
         $statement
             ->expects($this->once())
             ->method('fetchAll')
             ->will($this->returnValue($dataset));
 
-        $connection = $this->getMock('Doctrine\DBAL\Connection', array(), array(), '', false);
+        $connection = $this->createMock(Connection::class, array(), array(), '', false);
         $connection
             ->expects($this->once())
             ->method('executeQuery')
             ->will($this->returnValue($statement));
 
-        $options = $this->getMock('Enum\Options\DoctrineOptions');
+        $options = $this->createMock(DoctrineOptions::class);
         $options
             ->expects($this->once())
             ->method('getEnumItemTableName');

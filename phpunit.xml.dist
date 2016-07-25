@@ -12,13 +12,13 @@
          bootstrap="./vendor/autoload.php">
     <testsuites>
         <testsuite name="Enum Test Suite">
-            <directory>./tests/EnumTest</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory suffix=".php">src/Enum</directory>
+            <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
 

@@ -1,13 +1,15 @@
 <?php
 namespace EnumTest\Factory;
 
+use Enum\Adapter\AdapterInterface;
 use Enum\Factory\AdapterFactory;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 class AdapterFactoryTest extends \PHPUnit_Framework_TestCase
 {
     public function testCreateService()
     {
-        $serviceLocator = $this->getMock('Zend\ServiceManager\ServiceLocatorInterface');
+        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
         
         $serviceLocator
             ->expects($this->at(0))
@@ -24,12 +26,12 @@ class AdapterFactoryTest extends \PHPUnit_Framework_TestCase
             ->method('get')
             ->with('Enum\Adapter\Adapter')
             ->will($this->returnValue(
-                $this->getMock('Enum\Adapter\AdapterInterface')
+                $this->createMock(AdapterInterface::class)
             ));
 
         $factory = new AdapterFactory;
         $adapter = $factory->createService($serviceLocator);
 
-        $this->assertInstanceOf('Enum\Adapter\AdapterInterface', $adapter);
+        $this->assertInstanceOf(AdapterInterface::class, $adapter);
     }
 }
